@@ -75,8 +75,8 @@ class PyTorchModel(DifferentiableModel):
         # TODO: add no_grad once we have a solution
         # for models that require grads internally
         # for inference
-        # with torch.no_grad():
-        #     predictions = self._model(inputs)
+        # predictions = self._model(inputs)
+        # return predictions
         predictions = predictions.detach().cpu().numpy()
         assert predictions.ndim == 2
         assert predictions.shape == (n, self.num_classes())
